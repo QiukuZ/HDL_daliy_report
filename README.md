@@ -68,4 +68,6 @@
 
 <img src="image/apriltag1.png" alt="april new" style="zoom:33%;" />
 
+<img src="image/apriltag2.png" alt="apriltag2" style="zoom:33%;" />
+
 目前存在问题:电机的电路板疑似烧坏,无法正常采集激光数据.已经向靖鑫要了一块新的.预计明天换上后可以正常采集激光数据.
