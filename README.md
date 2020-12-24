@@ -14,7 +14,7 @@
 
 ### 标定整体框架:
 
-![pipeline](/home/qk/Documents/Project/HDL_map/image/pipeline.png)
+![pipeline](image/pipeline.png)
 
 ### 2020.12.24
 
@@ -31,15 +31,15 @@
 
 - AprilTag检测
 
-  <img src="/home/qk/Documents/Project/HDL_map/image/apriltag_detect.png" alt="apriltag_detect" style="zoom:30%;" />
+  <img src="image/apriltag_detect.png" alt="apriltag_detect" style="zoom:30%;" />
 
 - ICP结果
 
-<img src="/home/qk/Documents/Project/HDL_map/image/align_result.png" alt="align_result" style="zoom:30%;" />
+<img src="image/align_result.png" alt="align_result" style="zoom:30%;" />
 
 - 重投影结果
 
-  <img src="/home/qk/Documents/Project/HDL_map/image/reproj_result.png" alt="reproj_result" style="zoom:30%;" />
+  <img src="image/reproj_result.png" alt="reproj_result" style="zoom:30%;" />
 
   ​	从重投影的结果中看外参的估计还是存在问题
 
