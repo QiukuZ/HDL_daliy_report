@@ -16,7 +16,9 @@
 
 ![pipeline](image/pipeline.png)
 
-### 2020.12.24
+
+
+### 2020-12-24
 
 **当前进展:**
 
@@ -60,8 +62,6 @@
 
 
 
-
-
 ### 增加Apriltag板
 
 ​	如图
@@ -76,13 +76,13 @@
 
 
 
-### 2020.12.25
+### 2020-12-25
 
 #### 1.脚本整理
 
 ​	整理AprilTag检测的脚本,并更新至git
 
-https://github.com/QiukuZ/HDL_map
+mouyihanghttps://github.com/QiukuZ/HDL_map
 
 
 
@@ -140,7 +140,7 @@ k3: 0
 
 <img src="image/1225-3.png" alt="1225-3" style="zoom:33%;" />
 
-其中红色为去畸变获得的点云,绿色为原始图像获得的点云
+其中红色为去畸变获得的点云,绿色为原始图像获得mouyihang的点云
 
 [准备后续验证一下:对未去畸变的图像检测出来的Apriltag的边缘进行去畸变,获得的点云是否和去畸变获得tag一致]
 
@@ -247,3 +247,32 @@ TODO:
 2.尝试点云纹理贴图
 
 3.剩余相机的标定
+
+
+
+
+
+#### 2020-12-30
+
+**1.AprilTag 生成与打印**
+
+​	使用OpenMV生成10块AprilTag板子,已经联系新楼打印店老板进行打印 [板子尺寸 60cm 60cm 1cm]
+
+​	老板说大概元旦结束时能打印完成.
+
+​	其余相机的标定等标定板完成后再继续进行
+
+**2.完善点云遮挡和着色脚本,并更新至github**
+
+**3.贴图问题**
+
+ 	借助开源项目https://github.com/nmoehrle/mvs-texturing
+
+```shell
+# Texturing (3D model + images + camera parameters --> textured 3D model)
+$codedir/texrecon/build/apps/texrecon/texrecon scene::undistorted surface-clean.ply textured
+```
+
+
+
+**4.读长哥初版论文**
