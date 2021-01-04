@@ -299,6 +299,8 @@ $codedir/texrecon/build/apps/texrecon/texrecon scene::undistorted surface-clean.
 
 <img src="image/1229-3.png" alt="1229-3" style="zoom:25%;" />
 
+<img src="image/0104-2.png" alt="0104-2" style="zoom:25%;" />
+
 ​	目前标定板已经到,可以进行剩下部分的标定
 
 | 时间节点 | 工作安排                                      |
