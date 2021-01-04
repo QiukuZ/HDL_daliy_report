@@ -273,6 +273,6 @@ TODO:
 $codedir/texrecon/build/apps/texrecon/texrecon scene::undistorted surface-clean.ply textured
 ```
 
-
+数据格式需要进一步处理,已经在本地编译完成
 
 **4.读长哥初版论文**
