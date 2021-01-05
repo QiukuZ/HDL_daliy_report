@@ -281,16 +281,6 @@ $codedir/texrecon/build/apps/texrecon/texrecon scene::undistorted surface-clean.
 
 
 
-#### 2021-1-4
-
-1.与长哥初步讨论论文中存在的一些语法问题
-
-​	已经沟通玩
-
-2.新标定板到了,替换用新的标定板获得结果
-
-<img src="image/0104-1.png" alt="0104-1" style="zoom:25%;" />
-
 
 
 ### 核动力项目工作清单
@@ -299,7 +289,7 @@ $codedir/texrecon/build/apps/texrecon/texrecon scene::undistorted surface-clean.
 
 <img src="image/1229-3.png" alt="1229-3" style="zoom:25%;" />
 
-<img src="image/0104-2.png" alt="0104-2" style="zoom:25%;" />
+
 
 ​	目前标定板已经到,可以进行剩下部分的标定
 
@@ -314,4 +304,112 @@ $codedir/texrecon/build/apps/texrecon/texrecon scene::undistorted surface-clean.
 关于导航和定位模块,等核动力的小车底盘到位之后,再去迦智找人帮忙安装和测试相关的功能.
 
 等小车到位以后,硬件系统在小车的排线\安装等也需进一步考虑
+
+
+
+
+
+#### 2021-1-4
+
+1.与长哥初步讨论论文中存在的一些语法问题
+
+​	已经沟通
+
+2.新标定板到了,替换用新的标定板获得结果
+
+<img src="image/0104-1.png" alt="0104-1" style="zoom:25%;" />
+
+单个激光的目前效果:
+
+<img src="image/0104-2.png" alt="0104-2" style="zoom:25%;" />
+
+先不考虑具体的激光点云的标定问题和相机激光的标定问题,先获得一个测试结果.用以给核电那边的人做一个demo
+
+
+
+3.整体流程整理
+
+​	1.激光数据采集 roslaunch urg_node urg_lidar.launch
+
+​	2.图像数据采集 crab_image.py
+
+​	3.激光to总体点云 [这里有一个外参待优化] bash run_get_pointcloud.bash 
+
+​	4.图像Apriltag检测并生成点云 bash run_apriltag_detect.bash
+
+​	5.点云遮挡计算并着色 bash run_ply_occlude_coloring.bash
+
+
+
+4.剩余相机的标定
+
+​	cam5:
+
+<img src="image/0104-3.png" alt="0104-3" style="zoom:25%;" />
+
+​	cam1:[存在问题]
+
+<img src="image/0104-4.png" alt="0104-4" style="zoom:25%;" />
+
+​	存在一定问题,需要进一步检查[内参?畸变矫正???]
+
+​	很有可能是内参标定在室内的参数不佳导致,明天在室外开阔的场景进行棋盘格的重新采集
+
+
+
+
+
+#### 2021-01-05
+
+1.关于AprilTag用来标定的精度问题:
+
+​	今天将五个相机都放到实验室外开阔的场景进行了重新的标定,发现,不同的标定结果对AprilTag的检测结果有较大影响,证明了用Apriltag进行位姿和标定板的位姿存在一定的误差.具体可由上图中CAM1中的结果和下图表明:
+
+
+
+​	**考虑到尽快给出一个初始的效果,先用AprilTag的结果做一个demo,然后考虑用COLMAP进行SFM,标定五个相机间的POSE以及将单帧激光扫描结果和SFM获得的点云进行一个ICP配准**
+
+
+
+**CAM1:**
+
+<img src="image/cam1_result.png" alt="cam1" style="zoom:25%;" />
+
+​	可以发现中心和近处的点云没有问题,但是边缘处和周围的点还是有较大问题,其余的CAM类似
+
+
+
+​	粗略的完成五个相机的标定:
+
+结果点云[其中Cam1的标定貌似有一些问题,也有可能是由于物体太近导致了问题的放大]
+
+**视角1**
+
+<img src="image/0105-2.png" alt="0105-2" style="zoom:33%;" />
+
+**视角2**
+
+<img src="image/0105-3.png" alt="0105-3" style="zoom:33%;" />
+
+**视角3:该视角表明cam1有点问题**
+
+<img src="image/0105-4.png" alt="0105-4" style="zoom:33%;" />
+
+
+
+**总体俯视图:**
+
+<img src="image/0105-5.png" alt="0105-5" style="zoom:33%;" />
+
+**[TODO整体流程回顾]:**
+
+**[后续思路&TODO]**
+
+2.使用COLMAP建图进行点云配准的外参标定
+
+3.激光的外参需要加新一步优化
+
+<img src="image/0105-1.png" alt="0105-1" style="zoom:50%;" />
+
+​	在经过180度的旋转之后激光存在小范围的偏差
 
