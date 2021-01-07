@@ -413,3 +413,18 @@ $codedir/texrecon/build/apps/texrecon/texrecon scene::undistorted surface-clean.
 
 ​	在经过180度的旋转之后激光存在小范围的偏差
 
+
+
+#### 2021-01-06
+
+1.居住舱激光SLAM
+
+2.韩总Paper符号修改
+
+3.激光数据验证,发现的确存在一定的待优化的外参
+
+<img src="image/0106-1.png" alt="0106-1" style="zoom:50%;" />
+
+<img src="image/0106-2.png" alt="0106-2" style="zoom:50%;" />
+
+可以看到在地面,重复扫描时,出现了分层现象,分层的距离大约为4cm左右.
