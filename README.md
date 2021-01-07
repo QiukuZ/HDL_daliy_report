@@ -428,3 +428,36 @@ $codedir/texrecon/build/apps/texrecon/texrecon scene::undistorted surface-clean.
 <img src="image/0106-2.png" alt="0106-2" style="zoom:50%;" />
 
 可以看到在地面,重复扫描时,出现了分层现象,分层的距离大约为4cm左右.
+
+
+
+#### 2021-01-07
+
+**1.激光和电机的标定问题Rethink**
+
+​	点云的坐标变换:
+$$
+P_m = R_w*P_l + t_w
+$$
+​	考虑电机的旋转[电机旋转为1自由度]
+
+​	
+$$
+R_m = 
+\begin{bmatrix}
+\cos\theta & -\sin\theta & 0      \\
+\sin\theta & \cos\theta & 0 \\
+0      & 0 & 1
+\end{bmatrix}
+$$
+​	
+$$
+P_w=R_m*P_m
+$$
+​	其中
+$$
+\theta = \frac {2\pi*p_{motor}}{4096}
+$$
+​	p_motor为电机编码盘读数
+
+**2.相机和激光的标定问题Rethink**
