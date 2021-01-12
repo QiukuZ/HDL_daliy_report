@@ -525,3 +525,11 @@ $$
       <img src="image/0111-1.png" alt="0111-1" style="zoom:5-%;" />
 
   上图可以发现,jpg的重建质量不足以用来进行外参的标定
+
+
+
+#### 2021-01-12
+
+- PNG colmap建图完成
+
+  <img src="image/0112-1.png" alt="0112-1" style="zoom:50%;" />
