@@ -92,3 +92,6 @@ tag_id 20
 
 - Apriltag约束的优化,还需要进一步测试
 
+  <img src="image/0116-1.png" alt="0116-1" style="zoom:50%;" />
+
+  这是优化后的结果(.....看起来有问题 )
