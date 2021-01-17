@@ -11,6 +11,16 @@
 
 
 
+### Colmap 和 Eigen中的注意点
+
+1. Colmap中的Image位姿表示为 world in image[有必要时需要进行转置]
+
+2. Eigen中的 q.coeffs() 输出顺序 q.coeffs = q.x q.y q.z q.w
+
+3. 从四元数恢复旋转矩阵的方法
+
+   
+
 #### 2021-01-13
 
 - 数据采集[Done!]
@@ -97,3 +107,46 @@ tag_id 20
   <img src="image/0116-1.png" alt="0116-1" style="zoom:50%;" />
 
   这是优化后的结果(.....看起来有问题 )
+
+- 0115的apriltag建图有问题的原因:colmap中存储的地图pose都是world to image,而之前存储的格式为image to world,修复后地图的显示正常
+
+- colamp
+
+<img src="image/0117-6.png" alt="0117-6" style="zoom:33%;" />
+
+- apriltag
+
+<img src="image/0117-5.png" alt="0117-5" style="zoom:33%;" />
+
+
+
+#### 2021-01-17
+
+- 重新采集了简单运动的数据进行测试
+
+1.采集的图像
+
+COLMAP Result:
+
+<img src="image/0117-1.png" alt="0117-1" style="zoom:63%;" />
+
+<img src="image/0117-2.png" alt="0117-2" style="zoom:33%;" />
+
+apriltag轨迹恢复的结果
+
+<img src="image/0117-3.png" alt="0117-3" style="zoom:33%;" />
+
+<img src="image/0117-4.png" alt="0117-4" style="zoom:33%;" />
+
+[优化还存在一点问题]
+
+[TODO修复apriltag的优化问题 - > DONE]
+
+
+
+- Apriltag优化构建完成
+
+
+
+[2021-01-18 TODO 重新采集数据进行实验]
+
