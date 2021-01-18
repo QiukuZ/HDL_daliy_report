@@ -150,3 +150,36 @@ apriltag轨迹恢复的结果
 
 [2021-01-18 TODO 重新采集数据进行实验]
 
+
+
+#### 2021-01-18
+
+- 代码整理
+  - apriltag_detect_slam.py [从raw image中提取每帧image-pose & corners]
+  - apriltag_pose_estimate.cpp [从上一步中的txt输出,恢复pose并进行优化]
+
+- tag优化结果
+
+  <img src="image/0118-1.png" alt="0118-1" style="zoom:50%;" />
+
+  绿色为原始位姿,红色为优化后的tag位姿
+
+- 将tag的原始结果和优化结果放到激光点云地图中进行验证
+
+  - 原始结果
+
+    <img src="image/0118-3.png" alt="0118-3" style="zoom:50%;" />
+
+  - 优化结果
+
+    <img src="image/0118-2.png" alt="0118-2" style="zoom:50%;" />
+
+    [**优化后的tag Pose反而变差了????**]
+
+- 优化前后图像位姿的变化
+
+  ![0118-4](image/0118-4.png)
+
+  从图像的轨迹看来,好像也是optim之后的效果反倒是不如之前的了
+
+- COLMAP
