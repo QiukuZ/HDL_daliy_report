@@ -187,3 +187,57 @@ apriltag轨迹恢复的结果
   <img src="image/0118-5.png" alt="0118-5" style="zoom:50%;" />
 
 - [TODO]特征约束和AprilTag约束联合优化
+
+  修改COLMAP code 加入AprilTag约束
+
+  https://github.com/QiukuZ/Colmap-AprilTag
+
+
+
+#### 2021-01-19
+
+- AprilTag轨迹生成geos.txt,使用colmap自带提供的model aligner进行对齐
+
+  <img src="image/0119-1.png" alt="0119-1" style="zoom:50%;" />
+
+
+
+- 联合优化
+
+  - 在colmap的优化框架中加入apriltag的约束项
+
+  - apriltag约束构建时:
+
+    - image位姿即colmap中image的位姿
+
+    - image观测从apriltag txt中获得
+
+      [目前存在问题,这个轨迹对齐的误差有点大......应该是存在一些错误的地方(包括)]
+
+- 使用了另一组更为简单的运动做测试发现对齐误差小很多
+
+  ![0119-2](image/0119-2.png)
+
+  [**数据采集的时候对标定板的观测还是要控制距离,由于定焦头的缘故, 远处的像素分辨率可能有所影响??????**]
+
+- 用evo_traj查看轨迹
+
+  ![0119-3](image/0119-3.png)
+
+[**?????y轴相差很大!?**]
+
+- 另一组比较复杂的简图结果对比
+
+  - 未进行align的地图
+
+  ![0119-5](image/0119-5.png)
+
+  - 不同参数配置的align结果
+
+    ![0119-6](image/0119-6.png)
+
+  
+
+- 关于Align的一些想法:
+  - Align的质量其实决定了error的初值,如果align的质量不好,对apriltag的角点观测可能会有比较大的影响
+  - 当第二组实验中,apriltag观测较远的时候,观测差异较大,下一次建图用的数据如果想保证较好的观测效果,可能要尽量使tag的距离保持始终
