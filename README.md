@@ -253,5 +253,32 @@ apriltag轨迹恢复的结果
 #### 2021-01-21
 
 - 复习考试
-- [TODO] 22号早上重新采集一组数据,保证标定板的距离
+- [TODO] 重新采集一组数据,保证标定板的距离
+
+
+
+#### 流程整理
+
+- 输入:带有AprilTag的Image序列
+
+1. [apriltag_detect_slam.py] => raw.txt[标定板检测信息]
+2. [运行colmap进行稀疏重建] => sparse_raw[稀疏重建模型]
+
+#### 2021-01-22
+
+- 以simpletest数据作为测试数据,先把apriltag和BA的优化调通
+
+- 目前存在的问题主要是在轨迹的对齐上,colmap提供了对所有图像和世界点进行相似变换操作的接口[**Transform**],也提供了Align的接口[**Align**]
+
+  - 联合优化的前提是april和colmap的坐标系有一致性
+
+- 初始轨迹
+
+  <img src="image/0122-1.png" alt="0122-1" style="zoom:33%;" />
+
+Align结果 [colmap的align在rotation上存在很多错误!]
+
+![0122-3](image/0122-3.png)
+
+- 最终测试 = colmap的位姿Align + 用第一帧的pose进行Align
 
