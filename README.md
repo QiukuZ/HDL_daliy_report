@@ -282,3 +282,10 @@ Align结果 [colmap的align在rotation上存在很多错误!]
 
 - 最终测试 = colmap的位姿Align + 用第一帧的pose进行Align
 
+![0122-4](image/0122-4.png)
+
+
+
+#### 2021-01-24~2021-01-27
+
+- 四门考试
