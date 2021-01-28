@@ -289,3 +289,21 @@ Align结果 [colmap的align在rotation上存在很多错误!]
 #### 2021-01-24~2021-01-27
 
 - 四门考试
+
+
+
+#### 2021-01-28
+
+- Align脚本的整理
+
+  - 由于单纯的evo align 和 colmap的align效果都不佳,最终整合了colmap和evo的align,最终获得一个较好的效果
+
+    ![0128-2](image/0128-2.png)
+
+- Apriltag与colmap的框架整合
+
+  - 大体框架完成
+  - 存在一个小问题:[Add Apriltag problem to Sum_Problem的时候发现参数传递存在问题....需要下一步解决]
+  - ![0128-1](image/0128-1.png)
+
+  
