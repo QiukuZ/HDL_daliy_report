@@ -296,7 +296,9 @@ Align结果 [colmap的align在rotation上存在很多错误!]
 
 - Align脚本的整理
 
-  - 由于单纯的evo align 和 colmap的align效果都不佳,最终整合了colmap和evo的align,最终获得一个较好的效果
+  - 由于单纯的evo align 和 colmap的align效果都不佳,最终整合了colmap和evo的align,最终获得一个较好的效果 
+
+  - align中的注意点：1.最终由于优化时，image的第一帧将被固定fix，因此在align完成后额外增加一步第一帧的align
 
     ![0128-2](image/0128-2.png)
 
@@ -307,3 +309,62 @@ Align结果 [colmap的align在rotation上存在很多错误!]
   - ![0128-1](image/0128-1.png)
 
   
+
+#### 2021-01-29
+
+- 原始的colmap的BA报告
+
+  ![0129](image/0129-1.png)
+
+- 加入Apriltag之后的BA报告
+
+  ​	![0129-2](image/0129-2.png)
+
+  新增参差项  784 = 49  * 2 * 4 * 2 [ 49张图片每张图片观测2个tag,每个tag有4个角点加入到BA中,每个角点重投影残差为uv 2 项]
+
+  新增变量数 21 = 7 * 3[tag板子4变量q和3变量t] ?? 可是为什么是3呢?????
+
+- 优化后的质量评估 [再思考一下]
+
+  ![0129-3](image/0129-3.png)
+
+  #### 2021-01-30
+
+  更复杂数据的测试[0118-big-test 142张图 很多块板子]
+
+  - BA
+
+    ```
+    Bundle adjustment report
+    ------------------------
+        Residuals : 709332
+       Parameters : 140297
+       Iterations : 19
+             Time : 12.9248 [s]
+     Initial cost : 0.6203 [px]
+       Final cost : 0.620275 [px]
+      Termination : Convergence
+    ```
+
+    
+
+  - AprilTag + BA
+
+    ```
+    Bundle adjustment report
+    ------------------------
+        Residuals : 711588
+       Parameters : 140374
+       Iterations : 77
+             Time : 26.1174 [s]
+     Initial cost : 4.68002 [px]
+       Final cost : 3.66474 [px]
+    ```
+
+  - 轨迹对比
+
+    ![0130](image/0130-1.png)
+
+  - 虽然加了AprilTag后,平均cost到了3.66,但是从轨迹来看依然约束住了,这个误差的增大应该是由于这组数据有很多apriltag的观测距离很远,导致误差很大的缘故.需要重新进行数据的采集
+
+- 
